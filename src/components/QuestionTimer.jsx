@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 // componente para gestionar el tiempo de cada pregunta 
 // damos como argumento el timer, que es el tiempo que dura
 // y el onTimer que lo utilizamos para la dependencia
+// y damos el mode para manejar el estilo
 export const QuestionTimer = ( { timer, onTimeOut, mode } ) => {
 
     // damos un estado donde recibimos el tiempo
@@ -54,6 +55,7 @@ export const QuestionTimer = ( { timer, onTimeOut, mode } ) => {
     return (
         
         // damos la propiedad de html de progress que el tiempo maximo es el timer y el valor es el primer estado
+        // y damos el mode como la clase
         <progress id="question-time" max={timer} value={remainingTime} className={mode}></progress>
 
     )

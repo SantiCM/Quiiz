@@ -27,18 +27,27 @@ export const Answers = ({answers, selectedAnswer, answerState, onSelect}) => {
 
             {shuffledAnswers.current.map((answer) => {
 
+                // Estilos anidados
+
+                // damos una variable de clases como cadena vacia
                 let cssClases = ""
 
+                // variable, esta seleccionada 
+                // es igual a seleccionar la respuesta es igual a la respuesta
                 const isSelected = selectedAnswer === answer
 
+                // si el estadp de las respuestas es igual a la clave de "answered" y esta seleccionada
                 if(answerState === "answered" && isSelected) {
-            
+                    
+                    // damos la clase seleccionada
                     cssClases = "selected"
             
                 }
 
+                // si el estado de las respuestas es correcto o incorrecto y esta seleccionado
                 if(answerState === "correct" || answerState === "wrong" && isSelected) {
-            
+                    
+                    // la clase es el estado por defecto
                     cssClases = answerState
                 
                 }
@@ -48,7 +57,11 @@ export const Answers = ({answers, selectedAnswer, answerState, onSelect}) => {
                     // le damos su key
                     <li key={answer} className="answer">
 
-                        { /* Y damos el boton al hacerle click, mandamos una funcion y damos la variable y le damos el answer (clasico)*/ }
+                        { /* Y damos el boton al hacerle click, mandamos una funcion y damos la variable OnSelect  y le damos el answer (clasico)
+                            damos la clase que hicimos dinamica en el className
+                            y le decimos que el boton se va a desabilitar cuando el estado sea diferente a nulo
+                            osea cuando una respuesta ya haya sido seleccionada 
+                        */ }
 
                         <button 
                 
@@ -59,6 +72,8 @@ export const Answers = ({answers, selectedAnswer, answerState, onSelect}) => {
                             disabled={answerState !== ""}
                 
                         >
+                            { /* Damos la respuesta */ }
+
                             {answer}
                 
                         </button>
