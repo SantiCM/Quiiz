@@ -17,13 +17,13 @@ export const Question = ({index, onSelectAnswer, onSkipAnswer}) => {
 
     let timer = 10000
 
-    if(answerState.selectedAnswer) {
+    if(answer.selectedAnswer) {
     
         timer = 1000
     
     }
 
-    if(answerState.isCorrect !== null) {
+    if(answer.isCorrect !== null) {
     
         timer = 2000
     
@@ -75,7 +75,20 @@ export const Question = ({index, onSelectAnswer, onSkipAnswer}) => {
   
         <div id="question">
 
-            <QuestionTimer timer={timer} onTimeOut={onSkipAnswer}></QuestionTimer>
+            <QuestionTimer 
+                
+                key={timer} 
+                
+                timer={timer} 
+                
+                onTimeOut={answer.selectedAnswer === "" ? onSkipAnswer : null} 
+                
+                mode={answerState}
+                
+            >
+
+
+            </QuestionTimer>
 
             <h2>{questions[index].text}</h2>
 

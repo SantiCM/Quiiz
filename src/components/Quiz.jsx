@@ -1,8 +1,7 @@
 import { useState, useCallback } from "react"
-
-import quizCompleteImage from "../assets/quiz-complete.png"
 import questions from "../questions"
 import { Question } from "./Questions"
+import { Summary } from "./Summary"
 
 
 export const Quiz = () => {
@@ -10,7 +9,6 @@ export const Quiz = () => {
     // mandamos un estado donde lo damos con un array vacioo
     const [userAnswers, setUserAnswers] = useState([])
 
-    
     const activeQuestionIndex = userAnswers.length 
 
     // mandamos una variable donde ya se completo el quiz
@@ -47,16 +45,10 @@ export const Quiz = () => {
     // si esta completado el quiz
     if(quizIsComplete) {
         
-        // retornamos este contenido jsx, el cual muestra que acabaste el cuestionario
+        
         return (
-            
-            <div id="summary">
-
-                <img src={quizCompleteImage} alt="Winnn"></img>
-
-                <h2>Quiz Completed!</h2>
-
-            </div>
+        
+            <Summary userAnswers={userAnswers}></Summary>
             
         )
     
@@ -76,6 +68,7 @@ export const Quiz = () => {
 
                 onSkipAnswer={handleSkipAnswer}
                 
+            
             >
 
             </Question>
